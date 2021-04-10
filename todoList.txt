@@ -1,0 +1,6 @@
+To do list 
+File reading 
+input data
+shortest path
+split up tasks 
+set up git hub
