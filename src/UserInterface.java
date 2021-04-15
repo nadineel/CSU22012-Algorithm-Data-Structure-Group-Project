@@ -9,7 +9,7 @@ public class UserInterface {
 
 	public static void main(String[] args) {
 		//makes the graph from the start so less loading after
-		//ShortestPathGraph graph = new ShortestPathGraph("stop_times.txt", "transfers.txt");
+		ShortestPathGraph graph = new ShortestPathGraph("stop_times.txt", "transfers.txt"); //comment this if you dont want to wait 
 
 		Scanner input = new Scanner (System.in)	;
 		System.out.println("Welcome to Vancouver public transport system. This system will help you plan your route.");
@@ -62,8 +62,8 @@ public class UserInterface {
 									int stop1 = Integer.parseInt(stops[0]);
 									int stop2 = Integer.parseInt(stops[1]);
 
-									//System.out.println("Shortest distance from " + stop1 + " to " + stop2 + ":" + graph.shortestDistanceAndTrace(stop1, stop2));
-									System.out.println("Shortest distance from " + stop1 + " to " + stop2 + ":" );
+									System.out.println("Shortest distance from " + stop1 + " to " + stop2 + ":" + graph.shortestDistanceAndTrace(stop1, stop2));
+									//System.out.println("Shortest distance from " + stop1 + " to " + stop2 + ":" );
 								}
 								catch(NumberFormatException nfe)//catches letters entered instead
 								{
