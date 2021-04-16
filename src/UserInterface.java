@@ -3,7 +3,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.Scanner;
+import java.util.List;
 
 public class UserInterface {
 
@@ -98,6 +98,16 @@ public class UserInterface {
 					input.nextLine();
 				}
 			}
+		}
+		///////Move it around
+		MyStops theStops= new UserInterface().new MyStops("stop_times.txt");
+		List<StopTimesInfo.StopInfo> yas=theStops.getStopsInfo("5:25:00");
+		///////
+	}
+	class MyStops extends StopTimesInfo{
+		MyStops(String filename) {
+			super(filename);
+			
 		}
 	}
 }
