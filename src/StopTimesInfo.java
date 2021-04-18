@@ -27,7 +27,7 @@ import java.util.Scanner;
 				while (scan.hasNextLine()) {
 					String s[] = scan.nextLine().split("\\s+|,\\s*");
                     //check which line is being processed
-					System.out.println(count+=1);
+					//System.out.println(count+=1);
 					int a = (s[0] != "") ? Integer.parseInt(s[0]) : -1;
 					Time b = Time.valueOf(s[1]);
 					Time c = Time.valueOf(s[2]);

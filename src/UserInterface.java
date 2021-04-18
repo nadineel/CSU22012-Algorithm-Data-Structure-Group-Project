@@ -125,21 +125,23 @@ public class UserInterface {
 									int minute = Integer.parseInt(time[1]);
 									int second = Integer.parseInt(time[2]);
 										
-									if(hour <0 || hour > 24)
+									if(hour <0 || hour > 23)
 									{
 										System.out.println("Error there are only 24 hours in a day");
 									}
-									else if(minute <0 || minute > 60)
+									else if(minute <0 || minute > 59)
 									{
 										System.out.println("Error there are only 60 minutes  in a hour");
 									}
-									else if(second <0 || second > 60)
+									else if(second <0 || second > 59)
 									{
 										System.out.println("Error there are only 60 seconds  in a minute");
 									}
 									else
 									{
 										List<StopTimesInfo.StopInfo> myStops= StopTimesInfo.getStopsInfo(userInput);
+										if(myStops!=null && myStops.size()>0) {
+
 										for(StopTimesInfo.StopInfo s:myStops)
 										{
 											System.out.println("stopheadsign:"+s.stop_headsign);
@@ -147,7 +149,12 @@ public class UserInterface {
 													+ "stop_headsign:%s,pickup_type:%d,drop_off_type:%d,shape_dist_traveled:%f%n",
 													s.trip_id,s.arrival_time,s.departure_time,s.stop_id,s.stop_sequence,s.stop_headsign,s.pickup_type,
 													s.drop_off_type,s.shape_dist_traveled);
-										}						
+										}	
+									}
+									else {
+											System.out.println("There are no trips arriving at this time");
+										}
+
 									}
 								}
 								catch(NumberFormatException nfe)//catches letters entered instead
