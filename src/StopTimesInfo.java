@@ -52,7 +52,7 @@ import java.util.Scanner;
 			}
 
 		} catch (FileNotFoundException e) {
-
+			System.out.println("File not found");
 		}
 	}
 
@@ -94,27 +94,35 @@ import java.util.Scanner;
 	}
 //returns all Stops with the specified arrival time sorted by by trip_id	
 	public static List<StopInfo> getStopsInfo(String arrivalTime) {
-		List<StopInfo>stopsByArrival= new ArrayList<>();
-		try {
-			Time arriveT= Time.valueOf(arrivalTime);
-
-			//get all with same arrivalTime
-			for(int i=0;i<stopInfos.size();i++) {
-//System.out.println(count+=1);
-				if((stopInfos.get(i).arrival_time).equals(arriveT)){
-					stopsByArrival.add(stopInfos.get(i));
-					
+		
+			List<StopInfo>stopsByArrival= new ArrayList<>();
+			try {
+				Time arriveT= Time.valueOf(arrivalTime);
+				String testTime[] = arrivalTime.split(":");
+				if (Integer.parseInt(testTime[0]) < 24 && Integer.parseInt(testTime[1]) < 60 
+					&& Integer.parseInt(testTime[2]) < 60) {
+				//get all with same arrivalTime
+				for(int i=0;i<stopInfos.size();i++) {
+	//System.out.println(count+=1);
+					if((stopInfos.get(i).arrival_time).equals(arriveT)){
+						stopsByArrival.add(stopInfos.get(i));
+						
+					}
 				}
+				Collections.sort(stopsByArrival,StopTimesInfo.sortByTripId);			
+				
+				return stopsByArrival;
+				}else {
+					System.out.println("STRING input is not in time format");
+					return null;
+				}
+				
 			}
-			Collections.sort(stopsByArrival,StopTimesInfo.sortByTripId);			
-			
-			return stopsByArrival;
-			
-		}
-		catch(Exception e) {
-			System.out.println("String input is not in time format");
-			return null;
-		}
+			catch(Exception e) {
+				System.out.println("String input is not in time format");
+				return null;
+			}
+		
 	}
 	
 	public static void main(String[] args) {
@@ -122,14 +130,19 @@ import java.util.Scanner;
 		new StopTimesInfo("stop_times.txt");
 		
 		List<StopInfo>myStops= StopTimesInfo.getStopsInfo("5:25:00");
-		System.out.println("Sorted by ID");
-		System.out.println(myStops.size());
-		for(StopInfo s:myStops){
-			System.out.println("stopheadsign:"+s.stop_headsign);
-			System.out.printf("trip_id:%d,arrival_time:%s,departure_time:%s,stop_id:%d,stop_sequence:%d,"
-					+ "stop_headsign:%s,pickup_type:%d,drop_off_type:%d,shape_dist_traveled:%f%n",
-			s.trip_id,s.arrival_time,s.departure_time,s.stop_id,s.stop_sequence,s.stop_headsign,s.pickup_type,
-			s.drop_off_type,s.shape_dist_traveled);
+		if(myStops!=null) {
+			System.out.println(myStops.size());
+		
+			for(StopInfo s:myStops){
+				System.out.println("stopheadsign:"+s.stop_headsign);
+				System.out.printf("trip_id:%d,arrival_time:%s,departure_time:%s,stop_id:%d,stop_sequence:%d,"
+						+ "stop_headsign:%s,pickup_type:%d,drop_off_type:%d,shape_dist_traveled:%f%n",
+				s.trip_id,s.arrival_time,s.departure_time,s.stop_id,s.stop_sequence,s.stop_headsign,s.pickup_type,
+				s.drop_off_type,s.shape_dist_traveled);
+			}
+		}
+		else {
+			System.out.println("error in string input");
 		}
 	}
 	
