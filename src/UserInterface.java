@@ -10,7 +10,7 @@ public class UserInterface {
 
 	public static void main(String[] args) {
 		//makes the graph from the start so less loading after
-		//ShortestPathGraph graph = new ShortestPathGraph("stop_times.txt", "transfers.txt"); //comment this if you dont want to wait and comment graph line in 1
+		ShortestPathGraph graph = new ShortestPathGraph("stop_times.txt", "transfers.txt"); //comment this if you dont want to wait and comment graph line in 1
 
 		//makes array list for stop search
 		MyStops theStops= new UserInterface().new MyStops("stop_times.txt");
@@ -42,7 +42,7 @@ public class UserInterface {
 					boolean one = true ;
 					while(one == true )
 					{
-						System.out.println("Please enter the two bus stops you want to find the shortest path between as numbers seperated by a comma.(enter quit to exit or back to return to main)");
+						System.out.println("Please enter the two bus stop ids you want to find the shortest path between as numbers seperated by a comma.(enter quit to exit or back to return to main)");
 						if (input.hasNextLine())	
 						{
 							String userInput =input.nextLine();
@@ -69,8 +69,8 @@ public class UserInterface {
 									int stop1 = Integer.parseInt(stops[0]);
 									int stop2 = Integer.parseInt(stops[1]);
 
-									//System.out.println("Shortest distance from " + stop1 + " to " + stop2 + ":" + graph.shortestDistanceAndTrace(stop1, stop2));
-									System.out.println("Shortest distance from " + stop1 + " to " + stop2 + ":" );
+									System.out.println("Shortest distance from " + stop1 + " to " + stop2 + ":" + graph.shortestDistanceAndTrace(stop1, stop2));
+									//System.out.println("Shortest distance from " + stop1 + " to " + stop2 + ":" );
 								}
 								catch(NumberFormatException nfe)//catches letters entered instead
 								{
