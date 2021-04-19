@@ -10,10 +10,13 @@ public class UserInterface {
 
 	public static void main(String[] args) {
 		//makes the graph from the start so less loading after
-		ShortestPathGraph graph = new ShortestPathGraph("stop_times.txt", "transfers.txt"); //comment this if you dont want to wait and comment graph line in 1
+		//ShortestPathGraph graph = new ShortestPathGraph("stop_times.txt", "transfers.txt"); //comment this if you dont want to wait and comment graph line in 1
 
 		//makes array list for stop search
 		MyStops theStops= new UserInterface().new MyStops("stop_times.txt");
+
+		//makes tst of stops
+		TernarySearch TST = new TernarySearch("stops.txt");
 
 		Scanner input = new Scanner (System.in)	;
 		System.out.println("Welcome to Vancouver public transport system. This system will help you plan your route.");
@@ -66,8 +69,8 @@ public class UserInterface {
 									int stop1 = Integer.parseInt(stops[0]);
 									int stop2 = Integer.parseInt(stops[1]);
 
-									System.out.println("Shortest distance from " + stop1 + " to " + stop2 + ":" + graph.shortestDistanceAndTrace(stop1, stop2));
-									//System.out.println("Shortest distance from " + stop1 + " to " + stop2 + ":" );
+									//System.out.println("Shortest distance from " + stop1 + " to " + stop2 + ":" + graph.shortestDistanceAndTrace(stop1, stop2));
+									System.out.println("Shortest distance from " + stop1 + " to " + stop2 + ":" );
 								}
 								catch(NumberFormatException nfe)//catches letters entered instead
 								{
@@ -84,11 +87,38 @@ public class UserInterface {
 
 				else if(input.hasNext("2"))
 				{	
-					System.out.println("2:");
-					System.out.println("Enter 1 for shortest path, 2 to search by bustops , 3 to find all trips by arrival time or  quit to exit the application");
 					input.nextLine();
-				}
+					boolean two = true;
 
+					while(two == true )
+					{
+						System.out.println("Search for a bus stop by full name or the first few characters.(enter quit to exit or back to return to main)");
+						if (input.hasNextLine())	
+						{
+							String userInput =input.nextLine();
+
+							if (userInput.equalsIgnoreCase("quit"))	
+							{
+								finished = true;
+								two = false ;
+								System.out.println("Thank you for using Vancouver public transport system. We hope you have a pleasent day :)"); 
+							}
+							else if(userInput.equalsIgnoreCase("back"))
+							{
+								System.out.println("Enter 1 for shortest path, 2 to search by bustops , 3 to find all trips by arrival time or  quit to exit the application");
+								two = false ;
+							}
+							else 
+							{
+								ArrayList search = TST.search(userInput.toUpperCase());
+								for (int i = 0; i < search.size(); i++) 
+								{
+									System.out.println( search.get(i) );
+								}			
+							}
+						}	
+					}
+				}
 				else if(input.hasNext("3"))
 				{
 					input.nextLine();
@@ -101,7 +131,7 @@ public class UserInterface {
 						{
 							String userInput =input.nextLine();
 							String[] time = userInput.split(":");
-							
+
 							if (userInput.equalsIgnoreCase("quit"))	
 							{
 								finished = true;
@@ -119,12 +149,12 @@ public class UserInterface {
 							}
 							else if (time.length == 3)
 							{
-								
+
 								try {
 									int hour = Integer.parseInt(time[0]);
 									int minute = Integer.parseInt(time[1]);
 									int second = Integer.parseInt(time[2]);
-										
+
 									if(hour <0 || hour > 23)
 									{
 										System.out.println("Error there are only 24 hours in a day");
@@ -142,16 +172,16 @@ public class UserInterface {
 										List<StopTimesInfo.StopInfo> myStops= StopTimesInfo.getStopsInfo(userInput);
 										if(myStops!=null && myStops.size()>0) {
 
-										for(StopTimesInfo.StopInfo s:myStops)
-										{
-											System.out.println("stopheadsign:"+s.stop_headsign);
-											System.out.printf("trip_id:%d,arrival_time:%s,departure_time:%s,stop_id:%d,stop_sequence:%d,"
-													+ "stop_headsign:%s,pickup_type:%d,drop_off_type:%d,shape_dist_traveled:%f%n",
-													s.trip_id,s.arrival_time,s.departure_time,s.stop_id,s.stop_sequence,s.stop_headsign,s.pickup_type,
-													s.drop_off_type,s.shape_dist_traveled);
-										}	
-									}
-									else {
+											for(StopTimesInfo.StopInfo s:myStops)
+											{
+												System.out.println("stopheadsign:"+s.stop_headsign);
+												System.out.printf("trip_id:%d,arrival_time:%s,departure_time:%s,stop_id:%d,stop_sequence:%d,"
+														+ "stop_headsign:%s,pickup_type:%d,drop_off_type:%d,shape_dist_traveled:%f%n",
+														s.trip_id,s.arrival_time,s.departure_time,s.stop_id,s.stop_sequence,s.stop_headsign,s.pickup_type,
+														s.drop_off_type,s.shape_dist_traveled);
+											}	
+										}
+										else {
 											System.out.println("There are no trips arriving at this time");
 										}
 
