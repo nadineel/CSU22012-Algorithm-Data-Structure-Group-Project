@@ -60,7 +60,7 @@ public class UserInterface {
 							}
 							else if(userInput.equalsIgnoreCase("back"))
 							{
-								System.out.println("Enter 1 for shortest path, 2 to search by bustops , 3 to find all trips by arrival time or  quit to exit the application");
+								System.out.println("Enter 1 for shortest path, 2 to search by bustops, 3 to find all trips by arrival time or  quit to exit the application");
 								one = false ;
 							}
 							else if(stops.length < 2 || stops.length >2)
@@ -105,11 +105,11 @@ public class UserInterface {
 							{
 								finished = true;
 								two = false ;
-								System.out.println("Thank you for using Vancouver public transport system. We hope you have a pleasent day :)"); 
+								System.out.println("Thank you for using Vancouver public transport system. We hope you have a pleasant day :)"); 
 							}
 							else if(userInput.equalsIgnoreCase("back"))
 							{
-								System.out.println("Enter 1 for shortest path, 2 to search by bustops , 3 to find all trips by arrival time or  quit to exit the application");
+								System.out.println("Enter 1 for shortest path, 2 to search by bustops, 3 to find all trips by arrival time or quit to exit the application");
 								two = false ;
 							}
 							else 
@@ -140,11 +140,11 @@ public class UserInterface {
 							{
 								finished = true;
 								three = false ;
-								System.out.println("Thank you for using Vancouver public transport system. We hope you have a pleasent day :)"); 
+								System.out.println("Thank you for using Vancouver public transport system. We hope you have a pleasant day :)"); 
 							}
 							else if(userInput.equalsIgnoreCase("back"))
 							{
-								System.out.println("Enter 1 for shortest path, 2 to search by bustops , 3 to find all trips by arrival time or  quit to exit the application");
+								System.out.println("Enter 1 for shortest path, 2 to search by bustops, 3 to find all trips by arrival time or  quit to exit the application");
 								three = false ;
 							}
 							else if(time.length < 3 || time.length >3)
@@ -165,11 +165,11 @@ public class UserInterface {
 									}
 									else if(minute <0 || minute > 59)
 									{
-										System.out.println("Error there are only 60 minutes  in a hour");
+										System.out.println("Error there are only 60 minutes in a hour");
 									}
 									else if(second <0 || second > 59)
 									{
-										System.out.println("Error there are only 60 seconds  in a minute");
+										System.out.println("Error there are only 60 seconds in a minute");
 									}
 									else
 									{
@@ -193,7 +193,7 @@ public class UserInterface {
 								}
 								catch(NumberFormatException nfe)//catches letters entered instead
 								{
-									System.out.println("Error enter in integers only for the time ");	
+									System.out.println("Error enter in integers only for the time");	
 								}		
 							}
 							else 
