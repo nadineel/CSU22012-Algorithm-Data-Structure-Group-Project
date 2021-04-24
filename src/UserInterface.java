@@ -177,7 +177,7 @@ public class UserInterface {
 										if(myStops!=null && myStops.size()>0) {
 											System.out.println("Trips with this arrival time found:"+myStops.size()+" matches sorted by their Trip ID");
 											
-											int i=0;
+											int i=1;
 											for(StopTimesInfo.StopInfo s:myStops)
 											{
 												System.out.println(i+".) "+"Trip ID:"+s.trip_id);
