@@ -13,13 +13,13 @@ public class UserInterface {
 		System.out.println("Welcome to Vancouver public transport system. This system will help you plan your route.");
 		System.out.println("Loading...");
 
-		//makes the graph from the start so less loading after
+		// constructs adjacency matrix once at startup
 		ShortestPathGraph graph = new ShortestPathGraph("stop_times.txt", "transfers.txt"); //comment this if you dont want to wait and comment graph line in 1
 
-		//makes array list for stop search
-		MyStops theStops= new UserInterface().new MyStops("stop_times.txt");
+		// makes arrayList for stop search
+		MyStops theStops = new UserInterface().new MyStops("stop_times.txt");
 
-		//makes tst of stops
+		// constructs ternary search tree for stop name search
 		TernarySearch TST = new TernarySearch("stops.txt");
 
 		Scanner input = new Scanner (System.in)	;
@@ -149,7 +149,7 @@ public class UserInterface {
 							}
 							else if(time.length < 3 || time.length >3)
 							{
-								System.out.println("Error enter in the hour,minute and second of the arrival time seperated by :");
+								System.out.println("Error enter in the hour, minute and second of the arrival time separated by :");
 							}
 							else if (time.length == 3)
 							{
@@ -195,7 +195,7 @@ public class UserInterface {
 
 									}
 								}
-								catch(NumberFormatException nfe)//catches letters entered instead
+								catch(NumberFormatException nfe) //catches letters entered instead
 								{
 									System.out.println("Error enter in integers only for the time");	
 								}		
@@ -214,6 +214,8 @@ public class UserInterface {
 				}
 			}
 		}
+
+		input.close();
 
 	}
 
