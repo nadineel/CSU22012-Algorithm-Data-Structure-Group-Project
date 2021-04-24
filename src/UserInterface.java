@@ -175,14 +175,18 @@ public class UserInterface {
 									{
 										List<StopTimesInfo.StopInfo> myStops= StopTimesInfo.getStopsInfo(userInput);
 										if(myStops!=null && myStops.size()>0) {
-
+											System.out.println("Trips with this arrival time found:"+myStops.size()+" matches sorted by their Trip ID");
+											
+											int i=0;
 											for(StopTimesInfo.StopInfo s:myStops)
 											{
-												System.out.println("stopheadsign:"+s.stop_headsign);
-												System.out.printf("trip_id:%d,arrival_time:%s,departure_time:%s,stop_id:%d,stop_sequence:%d,"
-														+ "stop_headsign:%s,pickup_type:%d,drop_off_type:%d,shape_dist_traveled:%f%n",
-														s.trip_id,s.arrival_time,s.departure_time,s.stop_id,s.stop_sequence,s.stop_headsign,s.pickup_type,
+												System.out.println(i+".) "+"Trip ID:"+s.trip_id);
+												System.out.printf("Departure Time:%s %nStop Id:%d %nStop Sequence:%d"
+														+ "%nStop Headsign:%s %nPickup Type:%d %nDrop Off Type:%d %nShape Distance Traveled:%.3f%n",
+														s.departure_time,s.stop_id,s.stop_sequence,s.stop_headsign,s.pickup_type,
 														s.drop_off_type,s.shape_dist_traveled);
+												System.out.println();
+												i++;
 											}	
 										}
 										else {
