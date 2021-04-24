@@ -1,5 +1,5 @@
-//note:if value=-1, its null
-//not know what type stopheadsign is. all are empty hence i left it as string atm
+// note: if value=-1, its null
+// not know what type stopheadsign is. all are empty hence i left it as string atm
 
 import java.io.File;
 import java.io.FileNotFoundException;
