@@ -9,6 +9,10 @@ import java.util.List;
 public class UserInterface {
 
 	public static void main(String[] args) {
+
+		System.out.println("Welcome to Vancouver public transport system. This system will help you plan your route.");
+		System.out.println("Loading...");
+
 		//makes the graph from the start so less loading after
 		ShortestPathGraph graph = new ShortestPathGraph("stop_times.txt", "transfers.txt"); //comment this if you dont want to wait and comment graph line in 1
 
@@ -19,7 +23,7 @@ public class UserInterface {
 		TernarySearch TST = new TernarySearch("stops.txt");
 
 		Scanner input = new Scanner (System.in)	;
-		System.out.println("Welcome to Vancouver public transport system. This system will help you plan your route.");
+		
 		System.out.println("Enter 1 if you would like to find the shortest path between 2 bus stops");
 		System.out.println("Enter 2 if you would like to search for a bus stop");
 		System.out.println("Enter 3 if you would like to find all trips in a given arrival time");
@@ -32,7 +36,7 @@ public class UserInterface {
 			{
 				if (input.hasNext("quit"))
 				{
-					System.out.println("Thank you for using Vancouver public transport system. We hope you have a pleasent day :)");
+					System.out.println("Thank you for using Vancouver public transport system. We hope you have a pleasant day :)");
 					finished = true ;
 				}
 				else if(input.hasNext("1"))
@@ -52,7 +56,7 @@ public class UserInterface {
 							{
 								finished = true;
 								one = false ;
-								System.out.println("Thank you for using Vancouver public transport system. We hope you have a pleasent day :)"); 
+								System.out.println("Thank you for using Vancouver public transport system. We hope you have a pleasant day :)"); 
 							}
 							else if(userInput.equalsIgnoreCase("back"))
 							{
