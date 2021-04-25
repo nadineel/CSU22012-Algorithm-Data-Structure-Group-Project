@@ -73,7 +73,7 @@ public class UserInterface {
 									int stop1 = Integer.parseInt(stops[0]);
 									int stop2 = Integer.parseInt(stops[1]);
 
-									System.out.println("Shortest distance from " + stop1 + " to " + stop2 + ":" + graph.shortestDistanceAndTrace(stop1, stop2));
+									System.out.println("Shortest distance from " + stop1 + " to " + stop2 + " is " + graph.shortestDistanceAndTrace(stop1, stop2));
 									//System.out.println("Shortest distance from " + stop1 + " to " + stop2 + ":" );
 								}
 								catch(NumberFormatException nfe)//catches letters entered instead
