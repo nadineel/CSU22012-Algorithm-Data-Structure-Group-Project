@@ -12,13 +12,13 @@ import java.util.Scanner;
 
  class StopTimesInfo {
 
-	protected static List<StopInfo> stopInfos;
+	protected static List<TripInfo> TripInfos;
 
 	StopTimesInfo(String filename) {
 		File file;
 		try {
 			if (filename != null) {
-				stopInfos = new ArrayList<>();
+				TripInfos = new ArrayList<>();
 				double i = -1;
 				int count=0;
 				file = new File(filename);
@@ -44,7 +44,8 @@ import java.util.Scanner;
 						i = -1;
 						
 					}
-					stopInfos.add(new StopInfo(a, b, c, d, e, f, g, h, i));
+
+					TripInfos.add(new TripInfo(a, b, c, d, e, f, g, h, i));
 				}
 				scan.close();
 			} else {
@@ -57,10 +58,10 @@ import java.util.Scanner;
 	}
 
 	// sort by trip id
-	protected static Comparator<StopInfo> sortByTripId = new Comparator<StopInfo>() {
+	protected static Comparator<TripInfo> sortByTripId = new Comparator<TripInfo>() {
 
 		@Override
-		public int compare(StopInfo a, StopInfo b) {
+		public int compare(TripInfo a, TripInfo b) {
 
 			// sort in ascending order
 			return a.trip_id - b.trip_id;
@@ -68,44 +69,20 @@ import java.util.Scanner;
 		}
 	};
 
-	protected class StopInfo {
-		protected int trip_id;
-		protected Time arrival_time;
-		protected Time departure_time;
-		protected int stop_id;
-		protected int stop_sequence;
-		protected String stop_headsign;
-		protected int pickup_type;
-		protected int drop_off_type;
-		protected double shape_dist_traveled;
-
-		protected StopInfo(int trip_id, Time arrival_time, Time departure_time, int stop_id, int stop_sequence,
-				String stop_headsign, int pickup_type, int drop_off_type, double shape_dist_traveled) {
-			this.trip_id = trip_id;
-			this.arrival_time = arrival_time;
-			this.departure_time = departure_time;
-			this.stop_id = stop_id;
-			this.stop_sequence = stop_sequence;
-			this.stop_headsign = stop_headsign;
-			this.pickup_type = pickup_type;
-			this.drop_off_type = drop_off_type;
-			this.shape_dist_traveled = shape_dist_traveled;
-		}
-	}
 //returns all Stops with the specified arrival time sorted by by trip_id	
-	public static List<StopInfo> getStopsInfo(String arrivalTime) {
+	public static List<TripInfo> getStopsInfo(String arrivalTime) {
 		
-			List<StopInfo>stopsByArrival= new ArrayList<>();
+			List<TripInfo>stopsByArrival= new ArrayList<>();
 			try {
 				Time arriveT= Time.valueOf(arrivalTime);
 				String testTime[] = arrivalTime.split(":");
 				if (Integer.parseInt(testTime[0]) < 24 && Integer.parseInt(testTime[1]) < 60 
 					&& Integer.parseInt(testTime[2]) < 60) {
 				//get all with same arrivalTime
-				for(int i=0;i<stopInfos.size();i++) {
+				for(int i=0;i<TripInfos.size();i++) {
 	//System.out.println(count+=1);
-					if((stopInfos.get(i).arrival_time).equals(arriveT)){
-						stopsByArrival.add(stopInfos.get(i));
+					if((TripInfos.get(i).arrival_time).equals(arriveT)){
+						stopsByArrival.add(TripInfos.get(i));
 						
 					}
 				}
@@ -129,11 +106,11 @@ import java.util.Scanner;
 		
 		new StopTimesInfo("stop_times.txt");
 		
-		List<StopInfo>myStops= StopTimesInfo.getStopsInfo("5:25:00");
+		List<TripInfo>myStops= StopTimesInfo.getStopsInfo("5:25:00");
 		if(myStops!=null) {
 			System.out.println(myStops.size());
 		
-			for(StopInfo s:myStops){
+			for(TripInfo s:myStops){
 				System.out.println("stopheadsign:"+s.stop_headsign);
 				System.out.printf("trip_id:%d,arrival_time:%s,departure_time:%s,stop_id:%d,stop_sequence:%d,"
 						+ "stop_headsign:%s,pickup_type:%d,drop_off_type:%d,shape_dist_traveled:%f%n",
@@ -145,7 +122,31 @@ import java.util.Scanner;
 			System.out.println("error in string input");
 		}
 	}
-	
-	
+
+	protected class TripInfo {
+		protected int trip_id;
+		protected Time arrival_time;
+		protected Time departure_time;
+		protected int stop_id;
+		protected int stop_sequence;
+		protected String stop_headsign;
+		protected int pickup_type;
+		protected int drop_off_type;
+		protected double shape_dist_traveled;
+
+		protected TripInfo(int trip_id, Time arrival_time, Time departure_time, int stop_id, int stop_sequence,
+				String stop_headsign, int pickup_type, int drop_off_type, double shape_dist_traveled) {
+			this.trip_id = trip_id;
+			this.arrival_time = arrival_time;
+			this.departure_time = departure_time;
+			this.stop_id = stop_id;
+			this.stop_sequence = stop_sequence;
+			this.stop_headsign = stop_headsign;
+			this.pickup_type = pickup_type;
+			this.drop_off_type = drop_off_type;
+			this.shape_dist_traveled = shape_dist_traveled;
+		}
+	}
 }
+
 

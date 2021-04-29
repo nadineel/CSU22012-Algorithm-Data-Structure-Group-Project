@@ -173,12 +173,12 @@ public class UserInterface {
 									}
 									else
 									{
-										List<StopTimesInfo.StopInfo> myStops= StopTimesInfo.getStopsInfo(userInput);
+										List<StopTimesInfo.TripInfo> myStops= StopTimesInfo.getStopsInfo(userInput);
 										if(myStops!=null && myStops.size()>0) {
 											System.out.println("Trips with this arrival time found:"+myStops.size()+" matches sorted by their Trip ID");
 											
 											int i=1;
-											for(StopTimesInfo.StopInfo s:myStops)
+											for(StopTimesInfo.TripInfo s:myStops)
 											{
 												System.out.println(i+".) "+"Trip ID:"+s.trip_id);
 												System.out.printf("Departure Time:%s %nStop Id:%d %nStop Sequence:%d"
