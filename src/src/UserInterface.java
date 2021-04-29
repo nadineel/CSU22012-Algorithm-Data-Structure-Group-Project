@@ -110,7 +110,7 @@ public class UserInterface {
 							}
 							else 
 							{
-								ArrayList search = TST.search(userInput.toUpperCase());
+								ArrayList<String> search = TST.search(userInput.toUpperCase());
 								for (int i = 0; i < search.size(); i++) 
 								{
 									System.out.println( search.get(i) );

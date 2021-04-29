@@ -20,7 +20,6 @@ import java.util.Scanner;
 			if (filename != null) {
 				TripInfos = new ArrayList<>();
 				double i = -1;
-				int count = 0;
 				file = new File(filename);
 				Scanner scan = new Scanner(file);
 				scan.nextLine();//skip the label

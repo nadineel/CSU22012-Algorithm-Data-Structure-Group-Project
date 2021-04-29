@@ -1,14 +1,11 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 import java.util.Scanner;
-
 
 public class ShortestPathGraph {
 	private String stop_timesFilename, transfersFilename;
 	private double adjacencyMatrix[][] = new double[12479][12479];
 
-	
 	ShortestPathGraph(String stop_timesFilename, String transfersFilename) {
 		this.stop_timesFilename = stop_timesFilename;
 		this.transfersFilename = transfersFilename;
@@ -174,16 +171,16 @@ public class ShortestPathGraph {
     	}
     }
 	
-	public static void main(String[] args) {
-		ShortestPathGraph graph = new ShortestPathGraph("C:\\Users\\Filip Kowalski\\Desktop\\inputs\\stop_times.txt", "C:\\Users\\Filip Kowalski\\Desktop\\inputs\\transfers.txt");
-		try {
-			graph.makeAdjacencyMatrix();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		System.out.println("Shortest distance from 35 to 8035: " + graph.shortestDistanceAndTrace(35, 8035));
-		//System.out.println("Path Takes: " + graph.shortestPathTrace(8756, 8577));
-		System.out.println("Shortest distance from 0 to 8035: " + graph.shortestDistanceAndTrace(0, 8035));
-		System.out.println("Shortest distance from 646 to 381: " + graph.shortestDistanceAndTrace(646, 381));
-	}
+	// public static void main(String[] args) {
+	// 	ShortestPathGraph graph = new ShortestPathGraph("C:\\Users\\Filip Kowalski\\Desktop\\inputs\\stop_times.txt", "C:\\Users\\Filip Kowalski\\Desktop\\inputs\\transfers.txt");
+	// 	try {
+	// 		graph.makeAdjacencyMatrix();
+	// 	} catch (FileNotFoundException e) {
+	// 		e.printStackTrace();
+	// 	}
+	// 	System.out.println("Shortest distance from 35 to 8035: " + graph.shortestDistanceAndTrace(35, 8035));
+	// 	//System.out.println("Path Takes: " + graph.shortestPathTrace(8756, 8577));
+	// 	System.out.println("Shortest distance from 0 to 8035: " + graph.shortestDistanceAndTrace(0, 8035));
+	// 	System.out.println("Shortest distance from 646 to 381: " + graph.shortestDistanceAndTrace(646, 381));
+	// }
 }

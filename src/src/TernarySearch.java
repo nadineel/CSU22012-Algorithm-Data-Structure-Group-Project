@@ -19,18 +19,18 @@ public class TernarySearch {
         - run inorder traversal on the node returned from normal search
     */
 
-    public static void main(String[] args) {
-        TernarySearch TST = new TernarySearch("stops.txt");
-        printArrayList( TST.search("hi") );
-        printArrayList( TST.search("h") );
-        printArrayList( TST.search("j") );
-        printArrayList( TST.search("jack") );
-        printArrayList( TST.search("himbo") );
-        printArrayList( TST.search("MARINE WAY") );
-        printArrayList( TST.search("ENG") );
-        printArrayList( TST.search("UNGLESS WAY FS GUILDFORD WAY WB") );
+    // public static void main(String[] args) {
+    //     TernarySearch TST = new TernarySearch("stops.txt");
+    //     printArrayList( TST.search("hi") );
+    //     printArrayList( TST.search("h") );
+    //     printArrayList( TST.search("j") );
+    //     printArrayList( TST.search("jack") );
+    //     printArrayList( TST.search("himbo") );
+    //     printArrayList( TST.search("MARINE WAY") );
+    //     printArrayList( TST.search("ENG") );
+    //     printArrayList( TST.search("UNGLESS WAY FS GUILDFORD WAY WB") );
 
-    }
+    // }
 
     public static void printArrayList(ArrayList<String> array) {
 
